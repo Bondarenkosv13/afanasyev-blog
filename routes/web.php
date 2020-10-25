@@ -21,10 +21,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Route::namespace('Blog')->prefix('blog')->name('blog.')->group(function() {
+    Route::resource('/posts', 'PostsController');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::namespace('Blog\Admin')->prefix('admin/blog')->name('blog.admin.')->group(function() {
+    Route::resource('/categories', 'CategoryController')->except('show', 'destroy');
+});

@@ -22,8 +22,10 @@ class BlogCategoriesTableSeeder extends Seeder
             'parent_id' => 0
         ];
 
-        for ($i = 1; $i <= 11; $i++) {
-            $cName = 'Категория #' . $i;
+        DB::table('blog_categories')->insert($categories);
+
+        for ($i = 1; $i <= 10; $i++) {
+            $cName = 'Категория #' . ($i+1);
             $parentId = ($i > 4) ? rand(1, 4) : 1;
 
             $categories = [
