@@ -16,4 +16,9 @@ class BlogCategory extends Model
         'description',
     ];
 
+    public function parentCategory()
+    {
+        return $this->belongsTo(BlogCategory::class, 'parent_id', 'id');
+    }
+
 }
